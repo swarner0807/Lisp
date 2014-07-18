@@ -1,0 +1,61 @@
+;;;Homework 4
+;;;Steven Warner
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;Converts inches into centimeters
+(define (in->cm cm)
+  (* 2.54 cm))
+  
+;;;Converts centimeters into inches
+(define (cm->in in)
+  (/ in 2.54))
+
+;;;Converts kilograms into pounds
+(define (kg->lb lb)
+  (/ lb 0.45359237))
+
+;;;Converts pounds into kilograms
+(define (lb->kg kg)
+  (* 0.45359237 kg))
+
+;;;Evalutes your BMI based on hight in cm and wieght in kg
+(define (BMI-Metric cm kg)
+  (let ((x (/ kg (expt (* .01 cm) 2)) ))
+  (cond ((< x 18.5) (list x 'underweight))
+        ((< x 25.0) (list x 'normal))
+        ((< x 30.0) (list x 'overweight))
+        ((>= x 30.0) (list x 'obese))
+)))
+
+
+;;;Evalutes your BMI based on hight in inches and wieght in pounds
+(define (BMI-American in lb)
+  (let ((x (BMI-Metric (in->cm in) (lb->kg lb))))
+  (cond ((< x 18.5) (list x 'underweight))
+        ((< x 25.0) (list x 'normal))
+        ((< x 30.0) (list x 'overweight))
+        ((>= x 30.0) (list x 'obese))
+)))
+
+;;;Converts a list of roman numeral to numbers
+(define ROMAN '((M 1000)
+                 (D 500)
+                 (C 100)
+                 (L 50)
+                 (X 10)
+                 (V 5)
+                 (I 1)))
+
+(define (value numeral)
+  (cadr (assoc numeral ROMAN)))
+
+(define (roman->num num)
+  (if (null? num)
+      0
+      (+ (value (car num)) (roman->num (cdr num)))))
+
+;;;  
+(define (sum-up-to N)
+  (if(zero? N)
+     0
+     (+ N (sum-up-to (- N 1)))))

@@ -1,3 +1,3 @@
-helloworld
+Lisp
 ==========
-This is a readme on the hello world repo
+Sample code I wrote in the Lisp dialect, Scheme
